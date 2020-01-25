@@ -21,8 +21,8 @@ prompts['rightBlocked'] = 'The right side of the vehicle is not clear for exit'
 
 for filename in prompts:
     name  = filename + '.mp3'
-    # TTF(name, prompts[filename])
-    playsound(name)
+    TTF(name, prompts[filename])
+#     playsound(name)
     break
 
 
