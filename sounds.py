@@ -6,9 +6,10 @@ language = 'en'
 
 def TTF(filename, text):
         """
-        where text and filename are trings
-        filename = string
-        text = string
+        Will save create and save a text to speech file
+        Parameters:
+        filename - str, name of file without extension
+        text - str, what the file will say
         """
         voice = gTTS(text=text, lang = language, slow = False)
         voice.save(filename)
