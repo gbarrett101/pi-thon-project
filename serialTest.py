@@ -11,10 +11,10 @@ response = ""
 try:
     print("Running")
     while True:
-        new_response = s.readline()
-        if response != new_response:
-            print(response)
-        response = new_response
+        response = s.readline()
+        # if response != new_response:
+        #     print(response)
+        print(response)
 except KeyboardInterrupt:
     s.close()
 
