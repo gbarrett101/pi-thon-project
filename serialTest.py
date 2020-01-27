@@ -9,6 +9,7 @@ except:
 time.sleep(5) # the Arduino is reset after enabling the serial connection, therefore we have to wait some seconds
 response = ""
 try:
+    print("Running")
     while True:
         new_response = s.readline()
         if response != new_response:
