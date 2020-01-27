@@ -12,6 +12,7 @@ try:
     print("Running")
     while True:
         response = s.readline()
+        print(type(response))
         # if response != new_response:
         #     print(response)
         print(response)
