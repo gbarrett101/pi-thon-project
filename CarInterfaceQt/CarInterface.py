@@ -106,7 +106,7 @@ if __name__ == "__main__":
     index = 0
     
     try:#try statement to look out for keeyboard interupts 
-        while True:
+        while len(s.readline())>0:
             Dialog = QtWidgets.QDialog()
             ui = Ui_Dialog()
             ui.setupUi(Dialog, index)
