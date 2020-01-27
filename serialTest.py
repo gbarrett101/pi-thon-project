@@ -8,16 +8,24 @@ except:
     pass
 time.sleep(5) # the Arduino is reset after enabling the serial connection, therefore we have to wait some seconds
 response = ""
-try:
-    print("Running")
+print("Running")
     while True:
         response = s.readline()
         print(type(response))
         # if response != new_response:
         #     print(response)
         print(response)
-except KeyboardInterrupt:
-    s.close()
+
+# try:
+#     print("Running")
+#     while True:
+#         response = s.readline()
+#         print(type(response))
+#         # if response != new_response:
+#         #     print(response)
+#         print(response)
+# except KeyboardInterrupt:
+#     s.close()
 
     
 
