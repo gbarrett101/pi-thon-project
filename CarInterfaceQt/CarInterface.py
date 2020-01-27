@@ -6,6 +6,8 @@ import time
 s = serial.Serial('/dev/ttyAMA0', 9600) # change name, if needed
 try:   
     s.open()
+except:
+    pass
 time.sleep(5) # the Arduino is reset after enabling the serial connection, therefore we have to wait some seconds
 
 def isSafe(distance, speed, threshold, doorPosition):
