@@ -1,7 +1,7 @@
 import serial
 import time
  
-s = serial.Serial('/dev/ttyUSB0', 9600) # change name, if needed
+s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
 try:
     s.open()
 except:
