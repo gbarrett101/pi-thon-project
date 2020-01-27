@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>Car0.1.png</file>
+    <file>Car1.1.png</file>
+    <file>Car2.1.png</file>
+    <file>Car3.1.png</file>
+  </qresource>
+</RCC>
