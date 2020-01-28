@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import serial
 import time
+from playsound import playsound
+
 
 #Open the serial port
 s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
@@ -99,6 +101,8 @@ class Ui_Dialog(object):
 
 import QtDesign_rc
 
+buttonState = 0
+newButtonState = 0
 buttonPushed = False #variable to keep track of the button state
 frontDoorDistance = 1
 rearDoorDistance = 2
@@ -112,36 +116,43 @@ if __name__ == "__main__":
     ui = Ui_Dialog()
     index = 0
     
-    ui.setupUi(Dialog, index)
-    Dialog.show()
-
-    try:#try statement to look out for keeyboard interupts 
+    try:#try statement to look out for keyboard interupts 
         while len(s.readline())>0:
-            
+            print("loop going")
             response = s.readline()
             response = str(response, 'utf-8')
             response = response.split(',')
-            speed, distance, signalStrength = response
+            speed = response[0]
+            distance = response[1]
+            signalStrength = response[2]
+            #code for the button that will initially be commented out
+            #newButtonState = response[3]
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
-            signalStrength = int(signalStrength) 
-
-            print([speed, distance])
+            signalStrength = int(signalStrength)
+            if newButtonState == 0 and buttonState == 1:
+                buttonPushed = True
+                if isSafe(distance, speed, threshold, frontDoorDistance) :
+                    #maybe say something here
+                    buttonPushed = False
+                else:
+                    playsound('wait.mp3')
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
-                print("loop 1")
+                #scenario where the car is not safe but previously before 
                 index = 3
                 ui.setupUi(Dialog, index)
                 Dialog.show()
-                
             elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
-                print("loop 2")
+                #scenario where the car is safe but it wasn't before
+                playsound('leftClear.mp3')
+                buttonPushed = False
                 index = 0
                 ui.setupUi(Dialog, index)
                 Dialog.show()
-                
+            buttonState = newButtonState
         s.close()
-        sys.exit(app.exec_())
+
     except KeyboardInterrupt:
         pass
 
-    
+    sys.exit(app.exec_())
