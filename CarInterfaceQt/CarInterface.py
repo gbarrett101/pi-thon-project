@@ -114,7 +114,7 @@ if __name__ == "__main__":
     
     try:#try statement to look out for keeyboard interupts 
         while len(s.readline())>0:
-            print("loop going")
+            
             response = s.readline()
             response = str(response, 'utf-8')
             response = response.split(',')
@@ -122,17 +122,21 @@ if __name__ == "__main__":
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
             signalStrength = int(signalStrength) 
+
+            print([speed, distance])
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
                 index = 3
                 ui.setupUi(Dialog, index)
                 Dialog.show()
+                print("loop 1")
             elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
                 index = 0
                 ui.setupUi(Dialog, index)
                 Dialog.show()
+                print("loop 2")
         s.close()
-
+        sys.exit(app.exec_())
     except KeyboardInterrupt:
         pass
 
-    sys.exit(app.exec_())
+    
