@@ -114,6 +114,7 @@ if __name__ == "__main__":
             ui = Ui_Dialog()
 
             response = s.readline()
+            response = str(response, 'utf-8')
             response = response.split(',')
             distance, speed = response
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
