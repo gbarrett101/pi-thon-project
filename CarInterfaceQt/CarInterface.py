@@ -109,13 +109,11 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    
+    ui = Ui_Dialog()
     index = 0
     
     try:#try statement to look out for keeyboard interupts 
         while len(s.readline())>0:
-            Dialog = QtWidgets.QDialog()
-            ui = Ui_Dialog()
 
             response = s.readline()
             response = str(response, 'utf-8')
@@ -128,8 +126,13 @@ if __name__ == "__main__":
                 index = 3
                 ui.setupUi(Dialog, index)
                 Dialog.show()
+            elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
+                index = 0
+                ui.setupUi(Dialog, index)
+                Dialog.show()
+        s.close()
 
     except KeyboardInterrupt:
-        s.close()
+        pass
 
     sys.exit(app.exec_())
