@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import serial
 import time
 from playsound import playsound
-
+import QtDesign_rc
 
 #Open the serial port
 s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
@@ -99,7 +99,41 @@ class Ui_Dialog(object):
         self.label_4.setText(_translate("Dialog", "<html><head/><body><p><img src=\":/newPrefix/Car3.1.png\"/></p></body></html>"))
         self.TextOut.setText(_translate("Dialog", "<html><head/><body><p><img src=\":/newPrefix/Car2.1.png\"/></p></body></html>"))
 
-import QtDesign_rc
+#main loop that the rpi will run
+def loop():
+    while len(s.readline())>0:
+            print("loop going")
+            response = s.readline()
+            response = str(response, 'utf-8')
+            response = response.split(',')
+            speed = response[0]
+            distance = response[1]
+            signalStrength = response[2]
+            #code for the button that will initially be commented out
+            #newButtonState = response[3]
+            speed = float(speed) #in cm/sec
+            distance = int(distance) #in cm
+            signalStrength = int(signalStrength)
+            # if newButtonState == 0 and buttonState == 1:
+            #     buttonPushed = True
+            #     if isSafe(distance, speed, threshold, frontDoorDistance) :
+            #         #maybe say something here
+            #         buttonPushed = False
+            #     else:
+            #         playsound('wait.mp3')
+            if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
+                #scenario where the car is not safe but previously before 
+                index = 3
+                ui.setupUi(Dialog, index)
+                Dialog.show()
+            elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
+                #scenario where the car is safe but it wasn't before
+                # playsound('leftClear.mp3') #more audio feedback stuff
+                # buttonPushed = False
+                index = 0
+                ui.setupUi(Dialog, index)
+                Dialog.show()
+            buttonState = newButtonState
 
 buttonState = 0
 newButtonState = 0
@@ -116,43 +150,9 @@ if __name__ == "__main__":
     ui = Ui_Dialog()
     index = 0
     
-    try:#try statement to look out for keyboard interupts 
-        while len(s.readline())>0:
-            print("loop going")
-            response = s.readline()
-            response = str(response, 'utf-8')
-            response = response.split(',')
-            speed = response[0]
-            distance = response[1]
-            signalStrength = response[2]
-            #code for the button that will initially be commented out
-            #newButtonState = response[3]
-            speed = float(speed) #in cm/sec
-            distance = int(distance) #in cm
-            signalStrength = int(signalStrength)
-            if newButtonState == 0 and buttonState == 1:
-                buttonPushed = True
-                if isSafe(distance, speed, threshold, frontDoorDistance) :
-                    #maybe say something here
-                    buttonPushed = False
-                else:
-                    playsound('wait.mp3')
-            if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
-                #scenario where the car is not safe but previously before 
-                index = 3
-                ui.setupUi(Dialog, index)
-                Dialog.show()
-            elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
-                #scenario where the car is safe but it wasn't before
-                playsound('leftClear.mp3')
-                buttonPushed = False
-                index = 0
-                ui.setupUi(Dialog, index)
-                Dialog.show()
-            buttonState = newButtonState
+    try: #try statement to look out for keyboard interupts 
+        loop()
+    except KeyboardInterrupt: #when the keyboard intereupts, close the serial port
         s.close()
-
-    except KeyboardInterrupt:
-        pass
 
     sys.exit(app.exec_())
