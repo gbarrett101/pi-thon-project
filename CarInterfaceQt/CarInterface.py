@@ -116,7 +116,10 @@ if __name__ == "__main__":
             response = s.readline()
             response = str(response, 'utf-8')
             response = response.split(',')
-            distance, speed = response
+            speed, distance, signalStrength = response
+            speed = float(speed) #in cm/sec
+            distance = int(distance) #in cm
+            signalStrength = int(signalStrength) 
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
                 index = 3
                 ui.setupUi(Dialog, index)
