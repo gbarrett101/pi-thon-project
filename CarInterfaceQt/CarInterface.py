@@ -112,18 +112,14 @@ if __name__ == "__main__":
         while len(s.readline())>0:
             Dialog = QtWidgets.QDialog()
             ui = Ui_Dialog()
-            ui.setupUi(Dialog, index)
-            Dialog.show()
 
             response = s.readline()
             response = response.split(',')
             distance, speed = response
-            if not isSafe(distance, speed, threshold, frontDoorDistance):
-                index = 1
-                pass
-            if not isSafe(distance, speed, threshold, rearDoorDistance):
-                index = 2
-                pass
+            if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
+                index = 3
+                ui.setupUi(Dialog, index)
+                Dialog.show()
 
             index = int(input('Mode: '))
     except KeyboardInterrupt:
