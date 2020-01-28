@@ -125,15 +125,17 @@ if __name__ == "__main__":
 
             print([speed, distance])
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
+                print("loop 1")
                 index = 3
                 ui.setupUi(Dialog, index)
                 Dialog.show()
-                print("loop 1")
+                
             elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
+                print("loop 2")
                 index = 0
                 ui.setupUi(Dialog, index)
                 Dialog.show()
-                print("loop 2")
+                
         s.close()
         sys.exit(app.exec_())
     except KeyboardInterrupt:
