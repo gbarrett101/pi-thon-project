@@ -129,7 +129,6 @@ if __name__ == "__main__":
                 ui.setupUi(Dialog, index)
                 Dialog.show()
 
-            index = int(input('Mode: '))
     except KeyboardInterrupt:
         s.close()
 
