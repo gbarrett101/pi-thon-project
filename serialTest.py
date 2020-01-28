@@ -11,7 +11,7 @@ response = ""
 print("Running")
 while True:
     response = s.readline()
-    str(response, 'utf-8')
+    response = str(response, 'utf-8')
     print(type(response))
     # if response != new_response:
     #     print(response)
