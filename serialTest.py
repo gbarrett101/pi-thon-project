@@ -1,6 +1,6 @@
 import serial
 import time
- 
+encoding = 'utf-8'
 s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
 try:
     s.open()
@@ -11,6 +11,7 @@ response = ""
 print("Running")
 while True:
     response = s.readline()
+    str(response, 'utf-8')
     print(type(response))
     # if response != new_response:
     #     print(response)
