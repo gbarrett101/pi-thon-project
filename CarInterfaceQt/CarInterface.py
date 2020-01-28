@@ -114,7 +114,7 @@ if __name__ == "__main__":
     
     try:#try statement to look out for keeyboard interupts 
         while len(s.readline())>0:
-
+            print("loop going")
             response = s.readline()
             response = str(response, 'utf-8')
             response = response.split(',')
