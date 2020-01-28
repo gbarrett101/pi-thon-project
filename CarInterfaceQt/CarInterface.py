@@ -112,6 +112,9 @@ if __name__ == "__main__":
     ui = Ui_Dialog()
     index = 0
     
+    ui.setupUi(Dialog, index)
+    Dialog.show()
+
     try:#try statement to look out for keeyboard interupts 
         while len(s.readline())>0:
             
