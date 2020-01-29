@@ -19,7 +19,8 @@ def loop():
         inp = inp.split(',')
         print(inp)
         state  = inp[0]
-        s2.write(state)
+        s2.write(str.encode(state))
+        # s2.write(state)
 
 
 if __name__ == "__main__":
