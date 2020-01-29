@@ -50,9 +50,10 @@ def loop():
             response = s.readline()
             response = str(response, 'utf-8') #decode into string
             response = response.split(',')
-            speed = response[0]
             distance = response[1]
             signalStrength = response[2]
+            if signalStrength > 100 and response[0]<2500:
+                speed = response[0]
             #code for the button that will initially be commented out
             newButtonState = int(response[3])
             # print(newButtonState)
