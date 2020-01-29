@@ -41,7 +41,7 @@ def loop():
             distance = response[1]
             signalStrength = response[2]
             #code for the button that will initially be commented out
-            newButtonState = response[3]
+            newButtonState = int(response[3])
             print(newButtonState)
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
