@@ -34,7 +34,6 @@ def loop():
     buttonPushed = False
     buttonState = 0
     while len(s.readline())>0:
-            print("loop going")
             response = s.readline()
             response = str(response, 'utf-8')
             response = response.split(',')
@@ -43,6 +42,7 @@ def loop():
             signalStrength = response[2]
             #code for the button that will initially be commented out
             newButtonState = response[3]
+            print(newButtonState)
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
             signalStrength = int(signalStrength)
