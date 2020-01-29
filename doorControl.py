@@ -1,6 +1,8 @@
 import serial
 import time
 import pygame
+import subprocess
+
 
 #Open the serial port
 s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
@@ -11,11 +13,13 @@ except:
 time.sleep(5) # the Arduino is reset after enabling the serial connection, therefore we have to wait some seconds
 
 def playAudio(name):
-    pygame.mixer.init()
-    pygame.mixer.music.load(name)
-    pygame.mixer.music.play()
-    while pygame.mixer.music.get_busy() == True:
-        continue
+    # pygame.mixer.init()
+    # pygame.mixer.music.load(name)
+    # pygame.mixer.music.play()
+    # while pygame.mixer.music.get_busy() == True:
+    #     continue
+    subprocess.Popen(['omxplayer','-b', name], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+
 
 def isSafe(distance, speed, threshold, doorPosition):
     """
