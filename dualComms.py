@@ -9,6 +9,7 @@ def loop():
         inp = s1.readline()
         inp = str(inp, 'utf-8')
         inp = inp.split(',')
+        print(inp)
         state  = inp[3]
         s2.write(state)
 
