@@ -22,7 +22,7 @@ def loop():
         print(type(state))
         # state = int(state)
         # print(state)
-        s2.write(int.encode(state))
+        # s2.write(int.encode(state))
         # s2.write(state)
 
 
