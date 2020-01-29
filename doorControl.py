@@ -1,6 +1,5 @@
 import serial
 import time
-import pygame
 import subprocess
 
 
@@ -60,6 +59,7 @@ def loop():
             distance = int(distance) #in cm
             signalStrength = int(signalStrength)
             print(isSafe(distance, speed, threshold, frontDoorDistance))
+            print(speed)
             if isSafe(distance, speed, threshold, frontDoorDistance):
                 s.write(bytes([0]))
             else:
