@@ -18,9 +18,9 @@ def loop():
         inp = str(inp, 'utf-8')
         inp = inp.split(',')
         # print(inp)
-        state  = inp[0]
+        state  = int(inp[0])
         print(state)
-        s2.write(str.encode(state))
+        s2.write(int.encode(state))
         # s2.write(state)
 
 
