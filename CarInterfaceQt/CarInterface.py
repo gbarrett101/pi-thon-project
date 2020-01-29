@@ -110,17 +110,17 @@ def loop():
             distance = response[1]
             signalStrength = response[2]
             #code for the button that will initially be commented out
-            #newButtonState = response[3]
+            newButtonState = response[3]
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
             signalStrength = int(signalStrength)
-            # if newButtonState == 0 and buttonState == 1:
-            #     buttonPushed = True
-            #     if isSafe(distance, speed, threshold, frontDoorDistance) :
-            #         #maybe say something here
-            #         buttonPushed = False
-            #     else:
-            #         playsound('wait.mp3')
+            if newButtonState == 0 and buttonState == 1:
+                buttonPushed = True
+                if isSafe(distance, speed, threshold, frontDoorDistance) :
+                    #maybe say something here
+                    buttonPushed = False
+                else:
+                    playsound('wait.mp3')
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
                 #scenario where the car is not safe but previously before 
                 index = 3
@@ -128,8 +128,9 @@ def loop():
                 Dialog.show()
             elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
                 #scenario where the car is safe but it wasn't before
-                # playsound('leftClear.mp3') #more audio feedback stuff
-                # buttonPushed = False
+                if buttonPushed:
+                    playsound('leftClear.mp3') #more audio feedback stuff
+                buttonPushed = False
                 index = 0
                 ui.setupUi(Dialog, index)
                 Dialog.show()
