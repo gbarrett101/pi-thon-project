@@ -20,8 +20,9 @@ def loop():
         # print(inp)
         state  = inp[0]
         print(type(state))
-        state = int(state[0])
-        print(state)
+        print(state[0])
+        # state = int(state[0])
+        # print(state)
         # s2.write(int.encode(state))
         # s2.write(state)
 
