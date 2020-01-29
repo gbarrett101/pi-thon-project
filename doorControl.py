@@ -13,12 +13,11 @@ except:
 time.sleep(5) # the Arduino is reset after enabling the serial connection, therefore we have to wait some seconds
 
 def playAudio(name):
-    # pygame.mixer.init()
-    # pygame.mixer.music.load(name)
-    # pygame.mixer.music.play()
-    # while pygame.mixer.music.get_busy() == True:
-    #     continue
-    subprocess.Popen(['omxplayer','-b', name], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
+    pygame.mixer.music.load(name)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy() == True:
+        continue
+    # subprocess.Popen(['omxplayer','-b', name], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True)
 
 
 def isSafe(distance, speed, threshold, doorPosition):
@@ -45,6 +44,7 @@ def loop():
     index = 0
     buttonPushed = False
     buttonState = 0
+    pygame.mixer.init()
     while len(s.readline())>0:
             response = s.readline()
             response = str(response, 'utf-8')
