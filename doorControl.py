@@ -30,8 +30,9 @@ def isSafe(distance, speed, threshold, doorPosition):
     Returns:
     boolean - True if it is safe to exit, false if it is not
     """
-    if distance < 50:
-        return False
+    # Debugging code
+    # if distance < 50:
+    #     return False
     if speed <= 0:
         time = float('inf')
     else:
@@ -86,7 +87,7 @@ newButtonState = 0
 buttonPushed = False #variable to keep track of the button state
 frontDoorDistance = 1
 rearDoorDistance = 2
-threshold = 10
+threshold = 1000
 
 
 try: #try statement to look out for keeyboard interupts 
