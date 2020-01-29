@@ -19,7 +19,8 @@ def isSafe(distance, speed, threshold, doorPosition):
     Returns:
     boolean - True if it is safe to exit, false if it is not
     """
-    
+    if distance < 4:
+        return False
     if speed <= 0:
         time = float('inf')
     else:
@@ -31,6 +32,7 @@ def isSafe(distance, speed, threshold, doorPosition):
 def loop():
     index = 0
     buttonPushed = False
+    buttonState = 0
     while len(s.readline())>0:
             print("loop going")
             response = s.readline()
