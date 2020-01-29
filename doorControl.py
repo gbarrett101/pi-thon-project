@@ -30,6 +30,7 @@ def isSafe(distance, speed, threshold, doorPosition):
 
 def loop():
     index = 0
+    buttonPushed = False
     while len(s.readline())>0:
             print("loop going")
             response = s.readline()
