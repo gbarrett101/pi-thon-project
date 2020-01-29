@@ -30,7 +30,7 @@ def isSafe(distance, speed, threshold, doorPosition):
     Returns:
     boolean - True if it is safe to exit, false if it is not
     """
-    # Debugging code
+    # Debugging/demostration code
     if distance < 50:
         return False
     if speed <= 0:
@@ -48,7 +48,7 @@ def loop():
     pygame.mixer.init()
     while len(s.readline())>0:
             response = s.readline()
-            response = str(response, 'utf-8')
+            response = str(response, 'utf-8') #decode into string
             response = response.split(',')
             speed = response[0]
             distance = response[1]
@@ -59,11 +59,11 @@ def loop():
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
             signalStrength = int(signalStrength)
-            # print(isSafe(distance, speed, threshold, frontDoorDistance))
+            print(isSafe(distance, speed, threshold, frontDoorDistance))
             if isSafe(distance, speed, threshold, frontDoorDistance):
                 s.write(bytes([0]))
             else:
-                print(bytes([1]))
+                # print(bytes([1]))
                 s.write(bytes([1]))
             if newButtonState == 0 and buttonState == 1:
                 buttonPushed = True
@@ -77,12 +77,12 @@ def loop():
                     playAudio('wait.mp3')
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
                 #scenario where the car is not safe but previously before 
-                index = 3
+                index = 3 #Vvstige of old code, but used to keep trck of the previous state
             elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
                 #scenario where the car is safe but it wasn't before
                 if buttonPushed:
                     playAudio('leftClear.mp3') #more audio feedback stuff
-                buttonPushed = False
+                    buttonPushed = False
                 index = 0
             buttonState = newButtonState
 
