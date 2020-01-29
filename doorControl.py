@@ -5,7 +5,7 @@ import subprocess
 
 
 #Open the serial port
-s = serial.Serial('/dev/ttyUSB2', 115200) # change name, if needed
+s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
 try:
     s.open()
 except:
