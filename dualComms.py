@@ -26,6 +26,8 @@ def loop():
         try:
             num = float(state)
             print(num)
+        except:
+            pass
         # s2.write(int.encode(state))
         # s2.write(state)
 
