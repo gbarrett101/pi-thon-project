@@ -16,11 +16,14 @@ def isSafe(distance, speed, threshold, doorPosition):
     speed - velocity at which the object is travelling
     threshold - willing tolerance of time for it to be deemed as safe to exit the vehicle
     doorPosition - distance the door is away from the sensor 
-
     Returns:
     boolean - True if it is safe to exit, false if it is not
     """
-    time = (distance-doorPosition)/speed
+    
+    if speed <= 0:
+        time = float('inf')
+    else:
+        time = (distance-doorPosition)/speed
     if time < threshold:
         return False
     return True
@@ -46,6 +49,7 @@ def loop():
                     #maybe say something here
                     buttonPushed = False
                 else:
+                    print("wait")
                     playsound('wait.mp3')
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
                 #scenario where the car is not safe but previously before 
