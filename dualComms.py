@@ -30,10 +30,10 @@ def loop():
             s2.write(num)
         except:
             pass
-        inp2 = s2.readline()
-        inp2 = str(inp, 'utf-8')
-        inp2 = inp.split(',')
-        print(inp2)
+        # inp2 = s2.readline()
+        # inp2 = str(inp, 'utf-8')
+        # inp2 = inp.split(',')
+        # print(inp2)
         # s2.write(state)
 
 
