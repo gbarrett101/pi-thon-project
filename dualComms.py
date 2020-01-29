@@ -26,9 +26,9 @@ def loop():
         try:
             num = float(state)
             print(num)
+            s2.write(num)
         except:
             pass
-        s2.write(num)
         # s2.write(state)
 
 
