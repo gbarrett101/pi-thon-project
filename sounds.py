@@ -15,11 +15,11 @@ def TTF(filename, text):
         voice.save(filename)
 
 prompts ={}
-# prompts['leftClear'] = 'The left side of the vehicle is now clear for exit'
+prompts['leftClear'] = 'The left side is clear'
 # prompts['leftBlocked'] = 'The left side of the vehicle is not clear for exit'
 # prompts['rightClear'] = 'The right side of the vehicle is now clear for exit'
 # prompts['rightBlocked'] = 'The right side of the vehicle is not clear for exit'
-prompts['wait'] = 'Wait'
+# prompts['wait'] = 'Wait'
 
 for filename in prompts:
     name  = filename + '.mp3'
