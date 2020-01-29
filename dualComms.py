@@ -2,8 +2,8 @@ import serial
 import time
 
 #change following port names as needed
-s1 = serial.Serial('/dev/ttyUSB0', 115200)
-s2 = serial.Serial('/dev/ttyACM0', 115200)
+s2 = serial.Serial('/dev/ttyUSB0', 115200)
+s1 = serial.Serial('/dev/ttyACM0', 115200)
 
 try:
     s1.open()
