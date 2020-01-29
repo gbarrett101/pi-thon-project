@@ -1,4 +1,5 @@
 import serial
+import time
 
 #change following port names as needed
 s1 = serial.Serial('/dev/ttyUSB0', 115200)
@@ -22,15 +23,20 @@ def loop():
         # print(type(state))
         # print(state[0])
         # state = int(state[0])
-        print(state)
+        # print(state)
         try:
             num = float(state)
             print(num)
             s2.write(num)
         except:
             pass
+        inp2 = s2.readline()
+        inp2 = str(inp, 'utf-8')
+        inp2 = inp.split(',')
+        print(inp2)
         # s2.write(state)
 
 
 if __name__ == "__main__":
+    time.sleep(2)
     loop()
