@@ -28,7 +28,7 @@ def loop():
             print(num)
         except:
             pass
-        # s2.write(int.encode(state))
+        s2.write(num)
         # s2.write(state)
 
 
