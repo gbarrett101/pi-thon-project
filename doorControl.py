@@ -61,7 +61,7 @@ def loop():
             signalStrength = int(signalStrength)
             # print(isSafe(distance, speed, threshold, frontDoorDistance))
             if isSafe(distance, speed, threshold, frontDoorDistance):
-                pass
+                s.write(bytes([0]))
             else:
                 print(bytes([1]))
                 s.write(bytes([1]))
