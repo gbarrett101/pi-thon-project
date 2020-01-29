@@ -69,7 +69,7 @@ def loop():
             elif index != 0 and isSafe(distance, speed, threshold, frontDoorDistance):
                 #scenario where the car is safe but it wasn't before
                 if buttonPushed:
-                    playsound('leftClear.mp3') #more audio feedback stuff
+                    playAudio('leftClear.mp3') #more audio feedback stuff
                 buttonPushed = False
                 index = 0
             buttonState = newButtonState
