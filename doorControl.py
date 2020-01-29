@@ -54,10 +54,11 @@ def loop():
             signalStrength = response[2]
             #code for the button that will initially be commented out
             newButtonState = int(response[3])
-            print(newButtonState)
+            # print(newButtonState)
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
             signalStrength = int(signalStrength)
+            print(isSafe(distance, speed, threshold, frontDoorDistance))
             if newButtonState == 0 and buttonState == 1:
                 buttonPushed = True
                 print("ran")
