@@ -50,16 +50,14 @@ def loop():
             response = s.readline()
             response = str(response, 'utf-8') #decode into string
             response = response.split(',')
-            distance = response[1]
-            signalStrength = response[2]
-            if signalStrength > 100 and response[0]<2500:
+            distance = int(response[1])
+            signalStrength = int(response[2])
+            if signalStrength > 100 and float(response[0])<2500:
                 speed = response[0]
             #code for the button that will initially be commented out
             newButtonState = int(response[3])
             # print(newButtonState)
             speed = float(speed) #in cm/sec
-            distance = int(distance) #in cm
-            signalStrength = int(signalStrength)
             print(isSafe(distance, speed, threshold, frontDoorDistance))
             print(speed)
             if isSafe(distance, speed, threshold, frontDoorDistance):
