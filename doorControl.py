@@ -48,6 +48,7 @@ def loop():
             signalStrength = int(signalStrength)
             if newButtonState == 0 and buttonState == 1:
                 buttonPushed = True
+                print("ran")
                 if isSafe(distance, speed, threshold, frontDoorDistance) :
                     #maybe say something here
                     buttonPushed = False
