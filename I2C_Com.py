@@ -1,7 +1,7 @@
 # Raspberry Pi to Arduino I2C Communication 
 # Python Code 
  
-import smbus
+from smbus import SMBus
  
 # Slave Addresses for Arduinos 
 ARDUINO_1_ADDRESS = 0x04 # I2C Address of Arduino 1 
