@@ -59,10 +59,11 @@ def loop():
             speed = float(speed) #in cm/sec
             distance = int(distance) #in cm
             signalStrength = int(signalStrength)
-            print(isSafe(distance, speed, threshold, frontDoorDistance))
+            # print(isSafe(distance, speed, threshold, frontDoorDistance))
             if isSafe(distance, speed, threshold, frontDoorDistance):
-                s.write(bytes([0]))
+                
             else:
+                print(bytes([1]))
                 s.write(bytes([1]))
             if newButtonState == 0 and buttonState == 1:
                 buttonPushed = True
