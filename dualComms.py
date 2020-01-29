@@ -23,8 +23,9 @@ def loop():
         # print(state[0])
         # state = int(state[0])
         print(state)
-        num = float(state)
-        print(num)
+        try:
+            num = float(state)
+            print(num)
         # s2.write(int.encode(state))
         # s2.write(state)
 
