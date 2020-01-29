@@ -5,7 +5,7 @@ import subprocess
 
 
 #Open the serial port
-s = serial.Serial('/dev/ttyUSB1', 115200) # change name, if needed
+s = serial.Serial('/dev/ttyUSB2', 115200) # change name, if needed
 try:
     s.open()
 except:
@@ -31,8 +31,8 @@ def isSafe(distance, speed, threshold, doorPosition):
     boolean - True if it is safe to exit, false if it is not
     """
     # Debugging code
-    # if distance < 50:
-    #     return False
+    if distance < 50:
+        return False
     if speed <= 0:
         time = float('inf')
     else:
