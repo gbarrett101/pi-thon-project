@@ -4,6 +4,14 @@ import serial
 s1 = serial.Serial('/dev/ttyUSB0', 115200)
 s2 = serial.Serial('/dev/ttyACM0', 115200)
 
+try:
+    s1.open()
+except:
+    pass
+try:
+    s2.open()
+except:
+    pass
 def loop():
     while True:
         inp = s1.readline()
