@@ -1,6 +1,6 @@
 import serial
 import time
-from playsound import playsound
+import pygame
 
 #Open the serial port
 s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
@@ -9,6 +9,13 @@ try:
 except:
     pass
 time.sleep(5) # the Arduino is reset after enabling the serial connection, therefore we have to wait some seconds
+
+def playAudio(name):
+    pygame.mixer.init()
+    pygame.mixer.music.load(name)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy() == True:
+        continue
 
 def isSafe(distance, speed, threshold, doorPosition):
     """
@@ -55,7 +62,7 @@ def loop():
                     buttonPushed = False
                 else:
                     print("wait")
-                    playsound('wait.mp3')
+                    playAudio('wait.mp3')
             if not isSafe(distance, speed, threshold, frontDoorDistance) and index != 3:
                 #scenario where the car is not safe but previously before 
                 index = 3
