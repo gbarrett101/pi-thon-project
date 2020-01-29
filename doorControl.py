@@ -30,7 +30,7 @@ def isSafe(distance, speed, threshold, doorPosition):
     Returns:
     boolean - True if it is safe to exit, false if it is not
     """
-    if distance < 4:
+    if distance < 50:
         return False
     if speed <= 0:
         time = float('inf')
