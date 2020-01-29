@@ -1,5 +1,6 @@
 import serial
 import time
+from playsound import playsound
 
 #Open the serial port
 s = serial.Serial('/dev/ttyUSB0', 115200) # change name, if needed
