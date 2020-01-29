@@ -19,8 +19,9 @@ def loop():
         inp = inp.split(',')
         # print(inp)
         state  = inp[0]
-        state = int(state)
-        print(state)
+        print(type(state))
+        # state = int(state)
+        # print(state)
         s2.write(int.encode(state))
         # s2.write(state)
 
