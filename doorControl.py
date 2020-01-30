@@ -67,7 +67,7 @@ def loop():
                 s.write(bytes([1]))
             if newButtonState == 0 and buttonState == 1:
                 buttonPushed = True
-                print("ran")
+                print("pushed")
                 print(isSafe(distance, speed, threshold, frontDoorDistance))
                 if isSafe(distance, speed, threshold, frontDoorDistance) :
                     #maybe say something here
