@@ -1,10 +1,11 @@
 #include <FastLED.h>
-#define LED_PIN         A1
+#define LED_PIN         A3
 #define NUM_LEDS        10
 #define MAX_BRIGHTNESS  100
 #define DELAY           200
 
 int input = 1;
+CRGB leds[NUM_LEDS];
 
 void setup()
 {
