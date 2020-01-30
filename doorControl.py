@@ -46,6 +46,7 @@ def loop():
     buttonPushed = False
     buttonState = 0
     pygame.mixer.init()
+    speed = 0
     while len(s.readline())>0:
             response = s.readline()
             response = str(response, 'utf-8') #decode into string
