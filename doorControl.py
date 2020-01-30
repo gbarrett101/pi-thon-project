@@ -53,11 +53,11 @@ def loop():
             distance = int(response[1])
             signalStrength = int(response[2])
             if signalStrength > 100 and float(response[0])<2500:
-                speed = response[0]
+                speed = float(response[0])
             #code for the button that will initially be commented out
             newButtonState = int(response[3])
             # print(newButtonState)
-            speed = float(speed) #in cm/sec
+            # speed = float(speed) #in cm/sec
             print(isSafe(distance, speed, threshold, frontDoorDistance))
             print(speed)
             if isSafe(distance, speed, threshold, frontDoorDistance):
